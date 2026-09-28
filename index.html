@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Companion website for A Comprehensive Survey on Hyperspectral Imaging in Computer Vision." />
+  <title>A Comprehensive Survey on Hyperspectral Imaging in Computer Vision</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <span class="brand-mark">HSI</span>
+        <span>HSI-CV Survey</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#abstract">Abstract</a>
+        <a href="#contributions">Highlights</a>
+        <a href="#taxonomy">Taxonomy</a>
+        <a href="#datasets">Datasets</a>
+        <a href="#benchmark">Benchmark</a>
+        <a href="#papers">References</a>
+        <a href="#citation">Citation</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <p class="eyebrow">Survey Companion Website</p>
+        <h1>A Comprehensive Survey on Hyperspectral Imaging in Computer Vision</h1>
+        <p class="subtitle">
+          From physical optical imaging and sensing systems to low-level restoration, high-level recognition, datasets,
+          spectral foundation models, and the domain gap between remote sensing and computer vision.
+        </p>
+        <div class="authors">
+          <span>Jincheng Li</span>
+          <span>Qi Bi</span>
+          <span>Shaodi You</span>
+          <span>Theo Gevers</span>
+          <span>University of Amsterdam / Utrecht University</span>
+        </div>
+        <div class="cta-row">
+          <a class="button primary" href="assets/Extension_0608_compressed.pdf" target="_blank" rel="noopener">Read Paper</a>
+          <a class="button" href="#benchmark">View Benchmark</a>
+          <a class="button" href="#papers">Browse References</a>
+          <a class="button" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="hero-card" aria-label="Website summary card">
+        <img src="assets/survey_overview.jpg" alt="Overview figure of the hyperspectral imaging in computer vision survey" />
+        <div class="mini-stats">
+          <div><strong id="stat-total">—</strong><span>Reference Entries</span></div>
+          <div><strong id="stat-categories">—</strong><span>Categories</span></div>
+          <div><strong id="stat-years">—</strong><span>Years</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="abstract" class="section-shell split-section">
+      <div>
+        <p class="eyebrow">Abstract</p>
+        <h2>Why HSI needs a computer vision perspective</h2>
+      </div>
+      <div class="prose lead-prose">
+        <p>
+          Hyperspectral imaging captures rich spectral information beyond conventional RGB images, enabling detailed
+          analysis of material properties and offering significant potential for computer vision. Existing research,
+          however, predominantly focuses on remote sensing or isolated tasks, and the fundamental differences between
+          remote sensing HSI and computer vision HSI remain underexplored.
+        </p>
+        <p>
+          This survey establishes a unified pipeline connecting physical imaging theory, dataset characteristics, and
+          downstream vision tasks. It organizes literature into low-level vision, high-level vision, and visual AI;
+          reviews commonly used computer-vision HSI datasets; benchmarks remote-sensing spectral foundation models on
+          representative CV datasets; and discusses challenges from theory, data, and applications.
+        </p>
+      </div>
+    </section>
+
+    <section id="contributions" class="section-shell">
+      <div class="section-heading">
+        <p class="eyebrow">Highlights</p>
+        <h2>Main contributions of the survey</h2>
+        <p>The page turns the manuscript into a project-style resource: abstract, contributions, taxonomy, datasets, benchmark tables, figures, and a searchable literature/resource database.</p>
+      </div>
+      <div class="contribution-grid">
+        <article class="contribution-card">
+          <span>01</span>
+          <h3>First HSI survey from a CV perspective</h3>
+          <p>Builds a coherent pipeline from optical image formation to computer vision tasks, rather than treating HSI only as remote sensing data.</p>
+        </article>
+        <article class="contribution-card">
+          <span>02</span>
+          <h3>RS vs CV domain differences</h3>
+          <p>Discusses illumination, materials, sensors, scene geometry, network architectures, and dataset characteristics across remote sensing and close-range vision.</p>
+        </article>
+        <article class="contribution-card">
+          <span>03</span>
+          <h3>Foundation-model benchmark</h3>
+          <p>Evaluates spectral foundation models on LIB-HSI, FVgNET, and HSICityV2, showing domain gaps and transfer limitations.</p>
+        </article>
+        <article class="contribution-card">
+          <span>04</span>
+          <h3>RGB SOTA vs current HSI networks</h3>
+          <p>Highlights the generation gap between modern RGB foundation models and current hyperspectral foundation models.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="physics" class="section-shell split-section visual-section">
+      <div>
+        <p class="eyebrow">Physics & Sensing</p>
+        <h2>From light to a 3-D HSI cube</h2>
+        <p class="section-note">The survey models HSI as a chain: light source → light-matter interaction → sensing optics → spectral response → HSI data cube.</p>
+      </div>
+      <div class="figure-card">
+        <img src="assets/rs_cv_settings.jpg" alt="Comparison of spectroscopy, remote sensing, and computer vision HSI settings" />
+        <p>Different settings for spectroscopy, remote sensing, and computer vision. CV HSI is harder because illumination, scene geometry, and sensor noise are more variable.</p>
+      </div>
+    </section>
+
+    <section class="section-shell">
+      <div class="section-heading compact-heading">
+        <p class="eyebrow">Imaging Systems</p>
+        <h2>Scanning and snapshot HSI acquisition</h2>
+      </div>
+      <div class="taxonomy-grid four-col">
+        <article class="tax-card">
+          <span>Point scanning</span>
+          <h3>Best spectral resolution</h3>
+          <p>Flexible and precise, but slow. Common in chemistry, biomedical diagnosis, and remote sensing.</p>
+        </article>
+        <article class="tax-card">
+          <span>Line scanning</span>
+          <h3>Balanced resolution</h3>
+          <p>Pushbroom acquisition balances spectral and temporal resolution; widely used in industrial inspection and CV datasets.</p>
+        </article>
+        <article class="tax-card">
+          <span>Spectral scanning</span>
+          <h3>Filter-based capture</h3>
+          <p>Area scanning with LCTF/AOTF filters is straightforward but costly and temporally limited.</p>
+        </article>
+        <article class="tax-card">
+          <span>Snapshot</span>
+          <h3>Dynamic scenes</h3>
+          <p>Captures spectral information in one shot, but often requires computationally heavy reconstruction.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="taxonomy" class="section-shell">
+      <div class="section-heading">
+        <p class="eyebrow">Taxonomy</p>
+        <h2>HSI in computer vision</h2>
+        <p>The survey groups HSI-CV work into low-level vision, high-level vision, and AI techniques.</p>
+      </div>
+      <div class="figure-card full-figure">
+        <img src="assets/hsi_cv_organization.jpg" alt="Organization of HSI in computer vision" />
+        <p>Taxonomy of HSI in computer vision used in the paper.</p>
+      </div>
+      <div class="task-map">
+        <article>
+          <h3>Low-level vision</h3>
+          <ul>
+            <li>Reconstruction from CASSI</li>
+            <li>Reconstruction from RGB</li>
+            <li>Super-resolution and fusion</li>
+            <li>Denoising</li>
+            <li>Demosaicing and deblurring</li>
+            <li>Spectral unmixing</li>
+            <li>Illumination spectra estimation</li>
+          </ul>
+        </article>
+        <article>
+          <h3>High-level vision</h3>
+          <ul>
+            <li>Feature extraction</li>
+            <li>Classification</li>
+            <li>Semantic segmentation</li>
+            <li>Face recognition and anti-spoofing</li>
+            <li>Object detection and salient object detection</li>
+            <li>Object tracking</li>
+          </ul>
+        </article>
+        <article>
+          <h3>AI in HSI</h3>
+          <ul>
+            <li>Multimodal HSI</li>
+            <li>Generative HSI</li>
+            <li>Hyperspectral novel view synthesis</li>
+            <li>Spectral foundation models</li>
+            <li>Parameter-efficient adaptation</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="datasets" class="section-shell dataset-section">
+      <div class="section-heading with-actions">
+        <div>
+          <p class="eyebrow">Datasets</p>
+          <h2>Computer-vision HSI datasets curated in the survey</h2>
+          <p>Summary adapted from the dataset collection table in the manuscript.</p>
+        </div>
+        <a class="button" href="#papers">Search dataset entries</a>
+      </div>
+      <div class="figure-card full-figure">
+        <img src="assets/dataset_examples.jpg" alt="Visual examples of HSI datasets in computer vision" />
+        <p>Examples and collection configurations of representative HSI datasets.</p>
+      </div>
+      <div class="table-wrap dataset-table-wrap">
+        <table class="data-table compact-table">
+          <thead>
+            <tr>
+              <th>Dataset</th><th>Year</th><th>Number</th><th>Bands</th><th>Range</th><th>Resolution</th><th>Technique</th><th>Illuminant</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Foster</td><td>2002</td><td>30</td><td>31</td><td>400-720 nm</td><td>various</td><td>LCTF</td><td>daylight</td></tr>
+            <tr><td>CAVE</td><td>2010</td><td>32</td><td>31</td><td>400-700 nm</td><td>512 × 512</td><td>LCTF</td><td>CIE D65</td></tr>
+            <tr><td>Harvard</td><td>2011</td><td>50</td><td>50</td><td>400-700 nm</td><td>1392 × 1040</td><td>LCTF</td><td>daylight</td></tr>
+            <tr><td>NUS</td><td>2014</td><td>77</td><td>31</td><td>400-700 nm</td><td>1392 × 1300</td><td>line scan</td><td>halide lamp / LED</td></tr>
+            <tr><td>ICVL</td><td>2016</td><td>201</td><td>31</td><td>400-700 nm</td><td>1392 × 1300</td><td>line scan</td><td>daylight</td></tr>
+            <tr><td>KAIST</td><td>2017</td><td>30</td><td>28</td><td>400-720 nm</td><td>2704 × 3376</td><td>LCTF</td><td>plasma lamp</td></tr>
+            <tr><td>HS-SOD</td><td>2018</td><td>60</td><td>81</td><td>380-780 nm</td><td>1025 × 768</td><td>LCTF</td><td>daylight</td></tr>
+            <tr><td>HSICityV2</td><td>2019/2020</td><td>1306</td><td>128</td><td>450-950 nm</td><td>1422 × 1889</td><td>snapshot</td><td>daylight</td></tr>
+            <tr><td>HSIDrive</td><td>2021/2023</td><td>752</td><td>25</td><td>600-975 nm</td><td>2048 × 1088</td><td>snapshot</td><td>daylight</td></tr>
+            <tr><td>HSIDwRD</td><td>2021</td><td>62</td><td>256</td><td>375-1075 nm</td><td>696 × 520</td><td>line scan</td><td>daylight & lamp</td></tr>
+            <tr><td>KAUST</td><td>2021</td><td>400</td><td>204</td><td>400-1000 nm</td><td>512 × 512</td><td>line scan</td><td>simulated illumination</td></tr>
+            <tr><td>NTIRE2022 / ARAD1K</td><td>2022</td><td>1000</td><td>31</td><td>400-700 nm</td><td>480 × 512</td><td>line scan</td><td>daylight</td></tr>
+            <tr><td>LIB-HSI</td><td>2022</td><td>513</td><td>204</td><td>400-1000 nm</td><td>512 × 512</td><td>line scan</td><td>daylight</td></tr>
+            <tr><td>FVgNET</td><td>2022</td><td>317</td><td>204</td><td>400-1000 nm</td><td>512 × 512</td><td>line scan</td><td>indoor lab LED</td></tr>
+            <tr><td>HFD100</td><td>2023</td><td>10738</td><td>256</td><td>375-1075 nm</td><td>696 × 520</td><td>line scan</td><td>daylight</td></tr>
+            <tr><td>BJTU-UVA</td><td>2024</td><td>765 / 7650</td><td>204</td><td>400-1000 nm</td><td>512 × 512</td><td>line scan</td><td>daylight</td></tr>
+            <tr><td>HOTC</td><td>2024</td><td>197 videos</td><td>25</td><td>470-620 nm</td><td>512 × 256</td><td>snapshot</td><td>daylight</td></tr>
+            <tr><td>Beyond RGB</td><td>2024</td><td>1680</td><td>36</td><td>380-730 nm</td><td>2584 × 1936</td><td>snapshot</td><td>daylight & lamp</td></tr>
+            <tr><td>HySpeFAS</td><td>2026</td><td>6760</td><td>30</td><td>450-750 nm</td><td>-</td><td>snapshot</td><td>daylight & LED</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="benchmark" class="section-shell benchmark-section">
+      <div class="section-heading">
+        <p class="eyebrow">Benchmarking Foundation Models</p>
+        <h2>Can remote-sensing spectral foundation models solve CV tasks?</h2>
+        <p>The survey evaluates SpectralGPT and HyperSIGMA variants on semantic segmentation datasets with OA and mIoU.</p>
+      </div>
+      <div class="benchmark-grid">
+        <article class="metric-card">
+          <span class="metric-label">LIB-HSI / best mIoU</span>
+          <strong>77.9</strong>
+          <p>SpectralGPT+ after fine-tuning. Off-the-shelf foundation models perform poorly without task adaptation.</p>
+        </article>
+        <article class="metric-card">
+          <span class="metric-label">FVgNET / best mIoU</span>
+          <strong>84.9</strong>
+          <p>SpectralGPT+ shows the strongest 17-class segmentation performance among evaluated foundation models.</p>
+        </article>
+        <article class="metric-card">
+          <span class="metric-label">HSICityV2 / best mIoU</span>
+          <strong>42.4</strong>
+          <p>Urban scenes remain difficult; fine-grained classes and class imbalance limit transferability.</p>
+        </article>
+      </div>
+      <div class="figure-card full-figure">
+        <img src="assets/class_distribution.jpg" alt="Class label distribution across LIB-HSI, FVgNET and HSICityV2" />
+        <p>Class imbalance analysis for LIB-HSI, FVgNET, and HSICityV2.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr><th>Dataset</th><th>Setting</th><th>SpectralGPT OA / mIoU</th><th>SpectralGPT+ OA / mIoU</th><th>SpatSIGMA OA / mIoU</th><th>HyperSIGMA OA / mIoU</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>LIB-HSI</td><td>Off-the-shelf</td><td>4.7 / 1.0</td><td>11.6 / 2.7</td><td>13.2 / 1.5</td><td>10.6 / 1.2</td></tr>
+            <tr><td>LIB-HSI</td><td>Fine-tuned</td><td>88.7 / 75.3</td><td>90.0 / 77.9</td><td>85.8 / 70.0</td><td>85.3 / 69.0</td></tr>
+            <tr><td>FVgNET</td><td>Off-the-shelf</td><td>2.3 / 0.1</td><td>1.6 / 0.6</td><td>0.0 / 0.0</td><td>3.3 / 0.5</td></tr>
+            <tr><td>FVgNET</td><td>Fine-tuned</td><td>96.2 / 78.3</td><td>97.6 / 84.9</td><td>96.7 / 78.5</td><td>96.7 / 78.0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrap two-table">
+        <table class="data-table compact-table">
+          <thead><tr><th>HSICityV2</th><th>U-Net</th><th>SpectralGPT</th><th>SpectralGPT+</th><th>SpatSIGMA</th><th>HyperSIGMA</th></tr></thead>
+          <tbody>
+            <tr><td>pSentinel mIoU</td><td>32.5</td><td>39.1</td><td>42.4</td><td>33.4</td><td>34.0</td></tr>
+            <tr><td>PCA mIoU</td><td>33.1</td><td>34.2</td><td>37.4</td><td>28.2</td><td>28.3</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="figure-card full-figure">
+        <img src="assets/foundation_models.jpg" alt="SpectralGPT and HyperSIGMA pipelines" />
+        <p>Representative spectral foundation models discussed in the survey.</p>
+      </div>
+    </section>
+
+    <section id="discussion" class="section-shell discussion-section">
+      <div class="section-heading">
+        <p class="eyebrow">Discussion</p>
+        <h2>Key challenges identified by the survey</h2>
+      </div>
+      <div class="discussion-grid">
+        <article><h3>Noise model & spectral stability</h3><p>Natural-scene HSI is affected by local illumination, geometry, reflection, transmission, and sensor acquisition.</p></article>
+        <article><h3>Domain gap</h3><p>RS labels are often coarse land-use classes; CV tasks require finer material and object understanding.</p></article>
+        <article><h3>Sensor disparities</h3><p>Datasets differ greatly in spectral range, band number, spatial resolution, technique, bit depth, and illuminant.</p></article>
+        <article><h3>Architecture gap</h3><p>HSI networks still lag behind RGB foundation models in scale, data, and task generality.</p></article>
+        <article><h3>Dataset scarcity</h3><p>Large-scale natural-scene HSI datasets are still limited compared with both RGB CV and remote sensing.</p></article>
+        <article><h3>Application readiness</h3><p>Robust deployment requires better calibration, uncertainty modeling, and benchmark protocols.</p></article>
+      </div>
+    </section>
+
+    <section id="papers" class="section-shell papers-section">
+      <div class="section-heading with-actions">
+        <div>
+          <p class="eyebrow">Reference Link Database</p>
+          <h2>Searchable references, methods, code, and dataset links</h2>
+          <p>Filter the extracted manuscript references by category, year, venue, dataset, method, or keyword. The full exported bibliography is also available at <code>data/references.csv</code>.</p>
+        </div>
+        <button class="button" id="export-csv" type="button">Export CSV</button>
+      </div>
+
+      <div class="filters" aria-label="Paper filters">
+        <label>
+          <span>Search</span>
+          <input id="search-input" type="search" placeholder="title, dataset, method, keyword…" />
+        </label>
+        <label>
+          <span>Category</span>
+          <select id="category-filter"><option value="all">All categories</option></select>
+        </label>
+        <label>
+          <span>Year</span>
+          <select id="year-filter"><option value="all">All years</option></select>
+        </label>
+        <label>
+          <span>Venue</span>
+          <select id="venue-filter"><option value="all">All venues</option></select>
+        </label>
+      </div>
+
+      <div class="summary-row" id="summary-row"></div>
+
+      <div class="table-wrap">
+        <table class="paper-table" id="paper-table">
+          <thead>
+            <tr>
+              <th data-sort="year">Year</th>
+              <th data-sort="title">Title</th>
+              <th data-sort="venue">Venue</th>
+              <th data-sort="category">Category</th>
+              <th>Task / Dataset</th>
+              <th>Links</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="hint">Tip: verified code/dataset links are direct links; unverified entries include Scholar, Semantic Scholar, Papers With Code, and GitHub search links for follow-up curation.</p>
+    </section>
+
+    <section class="section-shell stats-panel" aria-label="Statistics">
+      <div class="section-heading">
+        <p class="eyebrow">Statistics</p>
+        <h2>Live summary from the JSON database</h2>
+      </div>
+      <div class="chart-grid">
+        <div class="chart-card">
+          <h3>Resources by Category</h3>
+          <div id="category-bars" class="bars"></div>
+        </div>
+        <div class="chart-card">
+          <h3>Resources by Year</h3>
+          <div id="year-bars" class="bars"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="citation" class="section-shell citation-section">
+      <div class="section-heading">
+        <p class="eyebrow">Citation</p>
+        <h2>Reference this survey</h2>
+      </div>
+      <pre class="bibtex"><code>@article{li2026hsi_cv_survey,
+  title   = {A Comprehensive Survey on Hyperspectral Imaging in Computer Vision},
+  author  = {Li, Jincheng and Bi, Qi and You, Shaodi and Gevers, Theo},
+  journal = {Pattern Recognition},
+  year    = {2026},
+  note    = {Preprint / survey companion website}
+}</code></pre>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year-now"></span> HSI-CV Survey. Built with GitHub Pages.</p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <script src="papers.js"></script>
+</body>
+</html>
