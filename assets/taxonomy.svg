@@ -1,0 +1,54 @@
+<svg width="900" height="620" viewBox="0 0 900 620" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+<title id="title">HSI-CV taxonomy illustration</title>
+<desc id="desc">A clean diagram showing hyperspectral imaging workflow from light and sensor to HSI cube, tasks, and foundation models.</desc>
+<rect width="900" height="620" rx="32" fill="#F9FBFF"/>
+<defs>
+  <linearGradient id="g1" x1="66" y1="56" x2="786" y2="541" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#4257FF"/>
+    <stop offset="1" stop-color="#00A6A6"/>
+  </linearGradient>
+  <linearGradient id="cube" x1="296" y1="202" x2="553" y2="367" gradientUnits="userSpaceOnUse">
+    <stop stop-color="#8DA2FF"/>
+    <stop offset="1" stop-color="#76DDD8"/>
+  </linearGradient>
+  <filter id="shadow" x="0" y="0" width="900" height="620" filterUnits="userSpaceOnUse">
+    <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#14213D" flood-opacity="0.14"/>
+  </filter>
+</defs>
+<circle cx="145" cy="143" r="57" fill="#E8EBFF"/>
+<path d="M105 143H185M145 103V183M117 115L173 171M173 115L117 171" stroke="#4257FF" stroke-width="8" stroke-linecap="round"/>
+<text x="145" y="234" text-anchor="middle" fill="#14213D" font-family="Inter, Arial" font-weight="800" font-size="25">Light</text>
+<text x="145" y="263" text-anchor="middle" fill="#5D6B82" font-family="Inter, Arial" font-size="16">spectral response</text>
+<rect x="310" y="88" width="170" height="112" rx="24" fill="#FFFFFF" stroke="#D9E0EC" filter="url(#shadow)"/>
+<circle cx="364" cy="144" r="32" fill="#E8EBFF" stroke="#4257FF" stroke-width="5"/>
+<rect x="406" y="116" width="42" height="56" rx="10" fill="#00A6A6" opacity="0.85"/>
+<text x="395" y="234" text-anchor="middle" fill="#14213D" font-family="Inter, Arial" font-weight="800" font-size="25">Sensor</text>
+<text x="395" y="263" text-anchor="middle" fill="#5D6B82" font-family="Inter, Arial" font-size="16">snapshot / line-scan</text>
+<path d="M215 143H292" stroke="#B7C1D6" stroke-width="6" stroke-linecap="round"/>
+<path d="M280 130L300 143L280 156" stroke="#B7C1D6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M495 143H590" stroke="#B7C1D6" stroke-width="6" stroke-linecap="round"/>
+<path d="M578 130L598 143L578 156" stroke="#B7C1D6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<g filter="url(#shadow)">
+  <path d="M633 112L747 80L805 126L689 164L633 112Z" fill="#C7D2FE"/>
+  <path d="M689 164L805 126V285L689 327V164Z" fill="#76DDD8"/>
+  <path d="M633 112L689 164V327L633 273V112Z" fill="#8DA2FF"/>
+  <path d="M633 112L747 80L805 126L689 164L633 112ZM689 164V327M689 164L805 126M633 112V273L689 327L805 285V126" stroke="#FFFFFF" stroke-width="5" stroke-linejoin="round"/>
+</g>
+<text x="720" y="365" text-anchor="middle" fill="#14213D" font-family="Inter, Arial" font-weight="800" font-size="25">HSI Cube</text>
+<text x="720" y="394" text-anchor="middle" fill="#5D6B82" font-family="Inter, Arial" font-size="16">x × y × λ</text>
+<rect x="76" y="412" width="170" height="84" rx="22" fill="#FFFFFF" stroke="#D9E0EC"/>
+<text x="161" y="449" text-anchor="middle" fill="#14213D" font-family="Inter, Arial" font-weight="800" font-size="20">Low-level</text>
+<text x="161" y="475" text-anchor="middle" fill="#5D6B82" font-family="Inter, Arial" font-size="15">reconstruction</text>
+<rect x="278" y="412" width="170" height="84" rx="22" fill="#FFFFFF" stroke="#D9E0EC"/>
+<text x="363" y="449" text-anchor="middle" fill="#14213D" font-family="Inter, Arial" font-weight="800" font-size="20">Mid-level</text>
+<text x="363" y="475" text-anchor="middle" fill="#5D6B82" font-family="Inter, Arial" font-size="15">segmentation</text>
+<rect x="480" y="412" width="170" height="84" rx="22" fill="#FFFFFF" stroke="#D9E0EC"/>
+<text x="565" y="449" text-anchor="middle" fill="#14213D" font-family="Inter, Arial" font-weight="800" font-size="20">High-level</text>
+<text x="565" y="475" text-anchor="middle" fill="#5D6B82" font-family="Inter, Arial" font-size="15">recognition</text>
+<rect x="682" y="412" width="170" height="84" rx="22" fill="#FFFFFF" stroke="#D9E0EC"/>
+<text x="767" y="449" text-anchor="middle" fill="#14213D" font-family="Inter, Arial" font-weight="800" font-size="20">Foundation</text>
+<text x="767" y="475" text-anchor="middle" fill="#5D6B82" font-family="Inter, Arial" font-size="15">pretraining</text>
+<path d="M720 412V398" stroke="#B7C1D6" stroke-width="6" stroke-linecap="round"/>
+<path d="M160 397C160 355 300 333 450 333C600 333 768 355 768 397" stroke="url(#g1)" stroke-width="6" stroke-linecap="round" stroke-dasharray="10 14"/>
+<text x="450" y="557" text-anchor="middle" fill="#4257FF" font-family="Inter, Arial" font-weight="900" font-size="24">Hyperspectral Imaging in Computer Vision</text>
+</svg>
